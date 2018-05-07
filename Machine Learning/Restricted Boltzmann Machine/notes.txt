@@ -1,0 +1,16 @@
+https://stats.stackexchange.com/questions/113395/how-to-derive-the-gradient-formula-for-the-maximum-likelihood-in-rbm
+
+https://datascience.stackexchange.com/questions/15595/intuition-behind-restricted-boltzmann-machine-rbm
+
+https://stats.stackexchange.com/questions/93010/contrastive-divergence-making-hidden-states-binary
+
+
+I implemented it that way:
+
+    Sampling hidden from the real data, the data should be binary, therefore, it is not an issue, we take binary. It is the very first step of CD.
+    Sampling visible from hidden: Take the binary values (sampled values) of the hidden units.
+    Sampling hidden from visible: Take the activation probabilities of the visible units.
+
+Step 2 and 3 are repeated if you use more than CD-1.
+
+The quote "For the last update of the hidden units, [...] use the probability itself" means that for the very last update of the hidden units, you don't have to sample the values because it won't be used after, it is for efficiency.
